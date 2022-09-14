@@ -20,4 +20,3 @@ const postSchema = new Schema({
 });
 
 module.exports = model("post", postSchema);
-

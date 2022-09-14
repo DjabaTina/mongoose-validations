@@ -9,6 +9,7 @@ const generateToken = (user) => {
     {
       expiresIn: "1h",
     }
+    
   );
 
   return {
@@ -32,7 +33,7 @@ exports.register = async (req, res) => {
 
   //generate token
 
-  const token = generateToken(user)
+  const token = generateToken(user);
 
   res.status(201).json({ returnUser });
 };
@@ -48,14 +49,14 @@ exports.login = async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
     return res.status(400).json({ msg: "Invalid credentials" });
-  };
-//   const token = jwt.sign(
-//     { id: user._id, email: user.email },
-//     "d84cc807d5ed76261eb8743043e7b6f086198842d5e3fbaec568cac5cd3b74a4",
-//     {
-//       expiresIn: "1h",
-//     }
-//   );
+  }
+  //   const token = jwt.sign(
+  //     { id: user._id, email: user.email },
+  //     "d84cc807d5ed76261eb8743043e7b6f086198842d5e3fbaec568cac5cd3b74a4",
+  //     {
+  //       expiresIn: "1h",
+  //     }
+  //   );
 
   const token = generateToken(user);
 
